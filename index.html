@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matthew Chan — Portfolio</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --text-primary: #f5ebe6;
+      --text-secondary: rgba(245, 235, 230, 0.7);
+      --accent: #e8735a;
+      --tag-text: #f0a090;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0a0606;
+      font-family: Helvetica, Arial, sans-serif;
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    /* ---- Background ---- */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .bg-layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.1) translate(-4%, 6%);
+      filter: brightness(0.85) saturate(1.5) contrast(1.1);
+    }
+
+    /* Subtle overall dim — lets painting show everywhere */
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: rgba(8, 4, 4, 0.55);
+    }
+
+    /* ---- Layout ---- */
+    .page {
+      position: relative;
+      z-index: 10;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    /* ---- Name ---- */
+    .name {
+      font-size: 40px;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+      line-height: 1.05;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 30px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.9);
+      animation: fadeIn 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- Bio ---- */
+    .bio {
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      text-shadow: 0 1px 16px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* ---- Socials — inline, minimal ---- */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      animation: fadeIn 0.6s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .socials a {
+      color: var(--text-primary);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .socials a:hover {
+      color: var(--text-primary);
+    }
+
+    .socials svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ---- Projects ---- */
+    .section-label {
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.6s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .project {
+      background: rgba(12, 8, 6, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .project:nth-child(1) { animation-delay: 0.45s; }
+    .project:nth-child(2) { animation-delay: 0.55s; }
+    .project:nth-child(3) { animation-delay: 0.65s; }
+
+    .project:hover {
+      background: rgba(232, 115, 90, 0.1);
+      border-color: rgba(232, 115, 90, 0.15);
+      transform: translateX(4px);
+    }
+
+    .project-info { flex: 1; }
+
+    .project-name {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 9px;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--tag-text);
+      opacity: 0.7;
+    }
+
+    .tag::after {
+      content: "·";
+      margin-left: 6px;
+      opacity: 0.4;
+    }
+
+    .tag:last-child::after {
+      display: none;
+    }
+
+    .project-arrow {
+      color: rgba(245, 235, 230, 0.3);
+      font-size: 18px;
+      margin-left: 16px;
+      margin-top: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .project:hover .project-arrow {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .project-link {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-link:hover {
+      opacity: 0.7;
+    }
+
+    .project-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .project-images {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      overflow-x: auto;
+    }
+
+    .project-images img {
+      width: 120px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-images img:hover {
+      opacity: 1;
+    }
+
+    .img-placeholder {
+      width: 120px;
+      height: 72px;
+      border-radius: 6px;
+      border: 1px dashed rgba(245, 235, 230, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: rgba(245, 235, 230, 0.25);
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    /* ---- Achievements ---- */
+    .achievement {
+      background: rgba(12, 8, 6, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 10px;
+      text-align: left;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .achievement:hover {
+      background: rgba(255, 215, 0, 0.05);
+      border-color: rgba(255, 215, 0, 0.12);
+    }
+
+    .achievement-header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .achievement-name {
+      font-weight: bold;
+      font-size: 16px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .achievement-badge {
+      font-size: 11px;
+      font-weight: bold;
+      color: #ffd700;
+      background: rgba(255, 215, 0, 0.12);
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .achievement-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      margin-bottom: 4px;
+    }
+
+    .achievement-images {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      overflow-x: auto;
+    }
+
+    .achievement-images img {
+      width: 140px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+
+    .achievement-images img:hover {
+      opacity: 1;
+    }
+    .footer {
+      margin-top: 48px;
+      font-size: 11px;
+      color: rgba(245, 235, 230, 0.2);
+      animation: fadeIn 0.6s 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-layer">
+    <img src="bg-painting.webp" alt="" />
+  </div>
+  <div class="bg-overlay"></div>
+
+  <div class="page">
+    <h1 class="name">Matthew Chan</h1>
+    <p class="bio">Hey, I'm a 15-year-old high school student with a deep obsession for leveraging AI to bring my creative and meaningful ideas into life.</p>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="mailto:matthewashere0@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/matthew-chan-12546339b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="section-label">Projects</div>
+
+    <div class="project">
+      <div class="project-info">
+        <div class="project-name">Zombie Flick</div>
+        <div class="project-desc">Use your fingers to shoot zombies on the screen.</div>
+        <div class="tags">
+          <span class="tag">Gesture Control</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="https://air-zombie-flick-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Site
+          </a>
+        </div>
+        <div class="project-images">
+          <div class="img-placeholder">+ Add image</div>
+          <div class="img-placeholder">+ Add image</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-info">
+        <div class="project-name">Kairo</div>
+        <div class="project-desc">A high school dashboard to track academics, extracurriculars, projects &amp; awards with personalised feedback.</div>
+        <div class="tags">
+          <span class="tag">EdTech</span>
+          <span class="tag">Dashboard</span>
+        </div>
+        <div class="project-links">
+          <a href="https://kairooo-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Site
+          </a>
+        </div>
+        <div class="project-images">
+          <div class="img-placeholder">+ Add image</div>
+          <div class="img-placeholder">+ Add image</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-info">
+        <div class="project-name">More coming soon</div>
+        <div class="project-desc">New projects shipping every month.</div>
+        <div class="tags">
+          <span class="tag">2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px;"></div>
+    <div class="section-label" style="animation-delay: 0.7s;">Achievements</div>
+
+    <div class="achievement" style="animation-delay: 0.75s;">
+      <div class="achievement-header">
+        <div class="achievement-name">Strive 2026</div>
+        <span class="achievement-badge">🥈 2nd Place</span>
+      </div>
+      <div class="achievement-desc">Placed 2nd out of 60+ teams in one of the biggest high school business case competitions held at UBC Sauder by Prosper Foundation.</div>
+      <div class="achievement-images">
+        <div class="img-placeholder">+ Add image</div>
+        <div class="img-placeholder">+ Add image</div>
+        <div class="img-placeholder">+ Add image</div>
+      </div>
+    </div>
+
+    <div class="footer">Built by Matthew &middot; 2026</div>
+  </div>
+
+</body>
+</html>
