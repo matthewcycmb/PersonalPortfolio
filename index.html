@@ -60,6 +60,18 @@
       text-align: center;
     }
 
+    /* ---- Profile Picture ---- */
+    .profile-pic {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 16px;
+      animation: fadeIn 0.6s 0.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
     /* ---- Name ---- */
     .name {
       font-size: 40px;
@@ -138,7 +150,7 @@
       transition: all 0.3s ease;
       text-align: left;
       box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
-      animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+      overflow: hidden;
       animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -236,28 +248,28 @@
 
     .project-images {
       display: flex;
+      flex-direction: column;
       gap: 8px;
       margin-top: 12px;
-      overflow-x: auto;
     }
 
-    .project-images img {
-      width: 120px;
-      height: 72px;
-      object-fit: cover;
+    .project-images img,
+    .project-images video {
+      width: 100%;
       border-radius: 6px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       opacity: 0.85;
       transition: opacity 0.3s ease;
     }
 
-    .project-images img:hover {
+    .project-images img:hover,
+    .project-images video:hover {
       opacity: 1;
     }
 
     .img-placeholder {
-      width: 120px;
-      height: 72px;
+      width: 100%;
+      height: 120px;
       border-radius: 6px;
       border: 1px dashed rgba(245, 235, 230, 0.15);
       display: flex;
@@ -323,24 +335,49 @@
 
     .achievement-images {
       display: flex;
+      flex-direction: column;
       gap: 8px;
       margin-top: 12px;
-      overflow-x: auto;
     }
 
-    .achievement-images img {
-      width: 140px;
-      height: 90px;
-      object-fit: cover;
+    .achievement-images img,
+    .achievement-images video {
+      width: 100%;
       border-radius: 6px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       opacity: 0.85;
       transition: opacity 0.3s ease;
     }
 
-    .achievement-images img:hover {
+    .achievement-images img:hover,
+    .achievement-images video:hover {
       opacity: 1;
     }
+    /* ---- CTA ---- */
+    .cta {
+      margin-top: 48px;
+      text-align: center;
+      animation: fadeIn 0.6s 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .cta p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .cta a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity 0.3s ease;
+    }
+
+    .cta a:hover {
+      opacity: 0.7;
+    }
+
     .footer {
       margin-top: 48px;
       font-size: 11px;
@@ -357,8 +394,9 @@
   <div class="bg-overlay"></div>
 
   <div class="page">
+    <img src="profile.jpg" alt="Matthew Chan" class="profile-pic" />
     <h1 class="name">Matthew Chan</h1>
-    <p class="bio">Hey, I'm a 15-year-old high school student with a deep obsession for leveraging AI to bring my creative and meaningful ideas into life.</p>
+    <p class="bio">Hey there, I'm 15 and obsessed with tech, business, AI and content creation. I love bringing my creative and meaningful ideas to life through Claude Code, and showcasing my work on my insta: <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">matthewashere.com0</a> (2K+ followers).</p>
 
     <div class="socials">
       <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -377,42 +415,21 @@
       <a href="https://github.com/matthewcycmb" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
+      <a href="https://www.linkedin.com/in/matthew-chan-12546339b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
     </div>
 
     <div class="section-label">Projects</div>
 
     <div class="project">
       <div class="project-info">
-        <div class="project-name">Zombie Flick</div>
-        <div class="project-desc">Use your fingers to shoot zombies on the screen.</div>
-        <div class="tags">
-          <span class="tag">Gesture Control</span>
-          <span class="tag">JavaScript</span>
-        </div>
-        <div class="project-links">
-          <a href="https://air-zombie-flick-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Site
-          </a>
-          <a href="https://github.com/matthewcycmb/AirZombieFlickGame" target="_blank" rel="noopener noreferrer" class="project-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-        </div>
-        <div class="project-images">
-          <div class="img-placeholder">+ Add image</div>
-          <div class="img-placeholder">+ Add image</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-info">
         <div class="project-name">Kairo</div>
-        <div class="project-desc">A high school dashboard to track academics, extracurriculars, projects &amp; awards with personalised feedback.</div>
+        <div class="project-desc">Full-stack dashboard where high school students track academics, extracurriculars, and awards. Built with React and Supabase with AI-generated personalised feedback to help students improve.</div>
         <div class="tags">
-          <span class="tag">EdTech</span>
-          <span class="tag">Dashboard</span>
+          <span class="tag">React</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">AI Feedback</span>
         </div>
         <div class="project-links">
           <a href="https://kairooo-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -425,8 +442,7 @@
           </a>
         </div>
         <div class="project-images">
-          <div class="img-placeholder">+ Add image</div>
-          <div class="img-placeholder">+ Add image</div>
+          <img src="kairo-landing.png" alt="Kairo landing page" />
         </div>
       </div>
     </div>
@@ -434,10 +450,11 @@
     <div class="project">
       <div class="project-info">
         <div class="project-name">Gesture Arcade</div>
-        <div class="project-desc">A series of video games which involves using a webcam and hand gestures to operate. Games like ping pong, flappy bird, etc.</div>
+        <div class="project-desc">A series of 10+ browser-based games controlled entirely by hand gestures, no keyboard, no mouse. Uses MediaPipe and TensorFlow.js for real-time hand tracking at 30fps to detect gestures and translate them into game inputs.</div>
         <div class="tags">
-          <span class="tag">Gesture Control</span>
-          <span class="tag">Games</span>
+          <span class="tag">MediaPipe</span>
+          <span class="tag">TensorFlow.js</span>
+          <span class="tag">Canvas</span>
         </div>
         <div class="project-links">
           <a href="https://github.com/matthewcycmb/GestureArcade" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -446,8 +463,32 @@
           </a>
         </div>
         <div class="project-images">
-          <div class="img-placeholder">+ Add image</div>
-          <div class="img-placeholder">+ Add image</div>
+          <video src="gesture-arcade-demo.mov" autoplay muted loop playsinline style="max-width:100%;"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-info">
+        <div class="project-name">Zombie Flick</div>
+        <div class="project-desc">Flick zombies off the screen using your fingers. Built real-time hand tracking with MediaPipe to detect flick gestures in-browser and translate finger movements into projectile physics.</div>
+        <div class="tags">
+          <span class="tag">MediaPipe</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Real-time</span>
+        </div>
+        <div class="project-links">
+          <a href="https://air-zombie-flick-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Site
+          </a>
+          <a href="https://github.com/matthewcycmb/AirZombieFlickGame" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+        <div class="project-images">
+          <video src="zombie-flick-demo.mp4" autoplay muted loop playsinline style="max-height:300px;max-width:100%;align-self:center;"></video>
         </div>
       </div>
     </div>
@@ -455,10 +496,11 @@
     <div class="project">
       <div class="project-info">
         <div class="project-name">Pin Your Song</div>
-        <div class="project-desc">A public-shared board where anybody can post their favourite music to be seen, heard and liked.</div>
+        <div class="project-desc">A public shared board where anyone can pin their favourite songs, browse what others are listening to, and like tracks. Built with Next.js and Supabase for real-time updates.</div>
         <div class="tags">
-          <span class="tag">Music</span>
-          <span class="tag">Social</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">Real-time</span>
         </div>
         <div class="project-links">
           <a href="https://github.com/matthewcycmb/pinyoursong" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -467,8 +509,8 @@
           </a>
         </div>
         <div class="project-images">
-          <div class="img-placeholder">+ Add image</div>
-          <div class="img-placeholder">+ Add image</div>
+          <div class="img-placeholder">+ Add demo</div>
+          <div class="img-placeholder">+ Add demo</div>
         </div>
       </div>
     </div>
@@ -476,10 +518,11 @@
     <div class="project">
       <div class="project-info">
         <div class="project-name">Pinch To Scroll YT Shorts</div>
-        <div class="project-desc">A Chrome extension where your webcam can detect your pinches to scroll on to the next YouTube short.</div>
+        <div class="project-desc">Chrome extension that uses your webcam to detect pinch gestures via MediaPipe, letting you scroll through YouTube Shorts hands-free. No clicks, no taps, just pinch.</div>
         <div class="tags">
           <span class="tag">Chrome Extension</span>
-          <span class="tag">Gesture Control</span>
+          <span class="tag">MediaPipe</span>
+          <span class="tag">WebRTC</span>
         </div>
         <div class="project-links">
           <a href="https://github.com/matthewcycmb/PinchScrollReels" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -488,8 +531,7 @@
           </a>
         </div>
         <div class="project-images">
-          <div class="img-placeholder">+ Add image</div>
-          <div class="img-placeholder">+ Add image</div>
+          <video src="pinch-scroll-demo.mp4" autoplay muted loop playsinline></video>
         </div>
       </div>
     </div>
@@ -497,10 +539,10 @@
     <div class="project">
       <div class="project-info">
         <div class="project-name">Personal Portfolio</div>
-        <div class="project-desc">I created this very personal portfolio myself where I can showcase my projects &amp; achievements. The 2 most important things in the world...</div>
+        <div class="project-desc">This site. Hand-coded HTML and CSS with glassmorphic cards, staggered animations, and a fixed oil-painting background. No frameworks, no dependencies.</div>
         <div class="tags">
-          <span class="tag">Portfolio</span>
-          <span class="tag">Web</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
         </div>
         <div class="project-links">
           <a href="https://github.com/matthewcycmb/PersonalPortfolio" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -509,8 +551,7 @@
           </a>
         </div>
         <div class="project-images">
-          <div class="img-placeholder">+ Add image</div>
-          <div class="img-placeholder">+ Add image</div>
+          <video src="portfolio-demo.mov" autoplay muted loop playsinline style="max-height:300px;max-width:100%;align-self:center;"></video>
         </div>
       </div>
     </div>
@@ -523,12 +564,27 @@
         <div class="achievement-name">Strive 2026</div>
         <span class="achievement-badge">🥈 2nd Place</span>
       </div>
-      <div class="achievement-desc">Placed 2nd out of 60+ teams in one of the biggest high school business case competitions held at UBC Sauder by Prosper Foundation.</div>
+      <div class="achievement-desc">Placed 2nd out of 60+ teams at UBC Sauder's largest high school business case competition (Prosper Foundation). Built and demoed a working (DeepSeek 2.0) manufacturing app infront of 250+ students and 10+ judges.</div>
       <div class="achievement-images">
-        <div class="img-placeholder">+ Add image</div>
-        <div class="img-placeholder">+ Add image</div>
-        <div class="img-placeholder">+ Add image</div>
+        <video src="strive-demo.mov" autoplay muted loop playsinline></video>
+        <img src="strive-team.png" alt="Strive 2026 team photo" />
+        <img src="strive-presentation.jpg" alt="Strive 2026 presentation on stage" />
       </div>
+    </div>
+
+    <div class="achievement" style="animation-delay: 0.8s;">
+      <div class="achievement-header">
+        <div class="achievement-name">Instagram Content Creator</div>
+      </div>
+      <div class="achievement-desc">Gained 2,000+ followers and 1.5M+ views creating tech and lifestyle content on <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Instagram</a>.</div>
+      <div class="achievement-images">
+        <img src="instagram-stats.png" alt="Instagram analytics showing 1.5M+ views" />
+      </div>
+    </div>
+
+    <div class="cta">
+      <p>I ship fast, I learn faster. Looking for a summer 2026 internship where I can build real products.</p>
+      <p><a href="mailto:matthewashere0@gmail.com">matthewashere0@gmail.com</a></p>
     </div>
 
     <div class="footer">Built by Matthew &middot; 2026</div>
