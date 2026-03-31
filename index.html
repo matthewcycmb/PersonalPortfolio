@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matthew Chan — Portfolio</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:title" content="Matthew Chan — Portfolio">
+  <meta property="og:description" content="Grade 10 student in Vancouver building AI-powered tools, gesture-controlled games, and full-stack apps.">
+  <meta property="og:image" content="profile.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Matthew Chan — Portfolio">
+  <meta name="twitter:description" content="Grade 10 student in Vancouver building AI-powered tools, gesture-controlled games, and full-stack apps.">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -98,6 +106,17 @@
       animation: fadeIn 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
+    /* ---- Status line ---- */
+    .status {
+      font-size: 12px;
+      color: var(--accent);
+      opacity: 0.8;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 0.6s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
     /* ---- Socials — inline, minimal ---- */
     .socials {
       display: flex;
@@ -151,13 +170,7 @@
       text-align: left;
       box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
       overflow: hidden;
-      animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-
-    .project:nth-child(1) { animation-delay: 0.45s; }
-    .project:nth-child(2) { animation-delay: 0.55s; }
-    .project:nth-child(3) { animation-delay: 0.65s; }
-    .project:nth-child(4) { animation-delay: 0.75s; }
 
     .project:hover {
       background: rgba(232, 115, 90, 0.1);
@@ -167,11 +180,27 @@
 
     .project-info { flex: 1; }
 
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
     .project-name {
       font-weight: bold;
       font-size: 16px;
       margin-bottom: 4px;
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .project-date {
+      font-size: 9px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      opacity: 0.5;
+      white-space: nowrap;
     }
 
     .project-desc {
@@ -201,6 +230,23 @@
       content: "·";
       margin-left: 6px;
       opacity: 0.4;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 10px;
+      margin-bottom: 36px;
+      animation: fadeIn 0.6s 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .skills .tag {
+      opacity: 0.85;
+    }
+
+    .skills .tag::after {
+      display: none;
     }
 
     .tag:last-child::after {
@@ -293,7 +339,6 @@
       margin-bottom: 10px;
       text-align: left;
       box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
-      animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .achievement:hover {
@@ -425,6 +470,17 @@
     .other-projects[open] .other-projects-inner {
       animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
+
+    /* ---- Scroll fade-in ---- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -438,6 +494,7 @@
     <img src="profile.jpg" alt="Matthew Chan" class="profile-pic" />
     <h1 class="name">Matthew Chan</h1>
     <p class="bio">I build AI powered tools that solve real problems, from gesture-controlled games to business intelligence agents. As a grade 10 student in Vancouver, shipping full-stack apps with Claude Code.</p>
+    <p class="status">Currently shipping tools with Claude Code</p>
 
     <div class="socials">
       <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -461,11 +518,27 @@
       </a>
     </div>
 
-    <div class="section-label">Projects</div>
+    <div class="section-label" style="animation-delay: 0.3s;">Tech Stack</div>
+    <div class="skills">
+      <span class="tag">React</span>
+      <span class="tag">Next.js</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">MediaPipe</span>
+      <span class="tag">TensorFlow.js</span>
+      <span class="tag">Supabase</span>
+      <span class="tag">Claude API</span>
+      <span class="tag">Chrome Extensions</span>
+      <span class="tag">HTML/CSS</span>
+    </div>
 
-    <div class="project">
+    <div class="section-label fade-in">Projects</div>
+
+    <div class="project fade-in">
       <div class="project-info">
-        <div class="project-name">Reef Defender</div>
+        <div class="project-header">
+          <div class="project-name">Reef Defender</div>
+          <span class="project-date">2026</span>
+        </div>
         <div class="project-desc">A webcam-controlled reef defense game built with MediaPipe hand-tracking. Players use hand gestures to protect coral reefs from incoming threats. Won 1st place at the Games4Change Student Game Jam HK 2026 — solo entry competing against 40+ HKU university students across 10+ teams. Submitted to G4C Global 2026.</div>
         <div class="tags">
           <span class="tag">MediaPipe</span>
@@ -482,12 +555,19 @@
             GitHub
           </a>
         </div>
+        <div class="project-images">
+          <img src="reef-defender-landing.webp" alt="Reef Defender game menu" loading="lazy" />
+          <video src="reef-defender-demo.mp4" autoplay muted loop playsinline preload="none"></video>
+        </div>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project fade-in">
       <div class="project-info">
-        <div class="project-name">Kairo</div>
+        <div class="project-header">
+          <div class="project-name">Kairo</div>
+          <span class="project-date">2026</span>
+        </div>
         <div class="project-desc">An AI-powered tool that turns students' extracurriculars into a structured personal profile with skills extraction and personalized university guidance. Shipped to 80+ users, collected real feedback, and iterated based on user behavior — 344 visitors, 627 page views. Built with React, TypeScript, Supabase, and Claude API.</div>
         <div class="tags">
           <span class="tag">React</span>
@@ -505,12 +585,50 @@
             GitHub
           </a>
         </div>
+        <div class="project-images">
+          <img src="kairo-landing.webp" alt="Kairo landing page" loading="lazy" />
+          <video src="kairo-demo.mp4" autoplay muted loop playsinline preload="none"></video>
+        </div>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project fade-in">
       <div class="project-info">
-        <div class="project-name">Zombie Flick</div>
+        <div class="project-header">
+          <div class="project-name">Gesture Arcade</div>
+          <span class="project-date">2025</span>
+        </div>
+        <div class="project-desc">A series of 10+ browser-based games controlled entirely by hand gestures, no keyboard, no mouse. Uses MediaPipe and TensorFlow.js for real-time hand tracking at 30fps to detect gestures and translate them into game inputs.</div>
+        <div class="tags">
+          <span class="tag">MediaPipe</span>
+          <span class="tag">TensorFlow.js</span>
+          <span class="tag">Canvas</span>
+        </div>
+        <div class="project-links">
+          <a href="https://gesturearcadefinal.vercel.app?_vercel_share=nZ2J0GrqpqbkpCMWfDdzWviF6n8chqZv" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Site
+          </a>
+          <a href="https://github.com/matthewcycmb/GestureArcade" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+        <div class="project-images">
+          <video src="gesture-arcade-demo.mp4" autoplay muted loop playsinline preload="none"></video>
+          <video src="gesture-arcade-demo-1.mp4" autoplay muted loop playsinline preload="none"></video>
+          <video src="gesture-arcade-demo-2.mp4" autoplay muted loop playsinline preload="none"></video>
+          <video src="gesture-arcade-demo-3.mp4" autoplay muted loop playsinline preload="none"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="project fade-in">
+      <div class="project-info">
+        <div class="project-header">
+          <div class="project-name">Zombie Flick</div>
+          <span class="project-date">2025</span>
+        </div>
         <div class="project-desc">Flick zombies off the screen using your fingers. Built real-time hand tracking with MediaPipe to detect flick gestures in-browser and translate finger movements into projectile physics.</div>
         <div class="tags">
           <span class="tag">MediaPipe</span>
@@ -533,9 +651,12 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project fade-in">
       <div class="project-info">
-        <div class="project-name">Presentation Pincher</div>
+        <div class="project-header">
+          <div class="project-name">Presentation Pincher</div>
+          <span class="project-date">2025</span>
+        </div>
         <div class="project-desc">Chrome extension that detects pinch gestures via your webcam to switch slides in presentation mode — works with Canva, Google Slides, PowerPoint, and more. No clicker needed.</div>
         <div class="tags">
           <span class="tag">Chrome Extension</span>
@@ -549,42 +670,17 @@
           </a>
         </div>
         <div class="project-images">
-          <video src="presentation-pincher-demo.mp4" autoplay muted loop playsinline></video>
+          <video src="presentation-pincher-demo.mp4" autoplay muted loop playsinline preload="none"></video>
         </div>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project fade-in">
       <div class="project-info">
-        <div class="project-name">Gesture Arcade</div>
-        <div class="project-desc">A series of 10+ browser-based games controlled entirely by hand gestures, no keyboard, no mouse. Uses MediaPipe and TensorFlow.js for real-time hand tracking at 30fps to detect gestures and translate them into game inputs.</div>
-        <div class="tags">
-          <span class="tag">MediaPipe</span>
-          <span class="tag">TensorFlow.js</span>
-          <span class="tag">Canvas</span>
+        <div class="project-header">
+          <div class="project-name">Pinch To Scroll YT Shorts</div>
+          <span class="project-date">2025</span>
         </div>
-        <div class="project-links">
-          <a href="https://gesturearcadefinal.vercel.app?_vercel_share=nZ2J0GrqpqbkpCMWfDdzWviF6n8chqZv" target="_blank" rel="noopener noreferrer" class="project-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Site
-          </a>
-          <a href="https://github.com/matthewcycmb/GestureArcade" target="_blank" rel="noopener noreferrer" class="project-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-        </div>
-        <div class="project-images">
-          <video src="gesture-arcade-demo.mov" autoplay muted loop playsinline></video>
-          <video src="gesture-arcade-demo-1.mov" autoplay muted loop playsinline></video>
-          <video src="gesture-arcade-demo-2.mov" autoplay muted loop playsinline></video>
-          <video src="gesture-arcade-demo-3.mov" autoplay muted loop playsinline></video>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-info">
-        <div class="project-name">Pinch To Scroll YT Shorts</div>
         <div class="project-desc">Chrome extension that uses your webcam to detect pinch gestures via MediaPipe, letting you scroll through YouTube Shorts hands-free. No clicks, no taps, just pinch.</div>
         <div class="tags">
           <span class="tag">Chrome Extension</span>
@@ -598,7 +694,7 @@
           </a>
         </div>
         <div class="project-images">
-          <video src="pinch-scroll-demo.mp4" autoplay muted loop playsinline></video>
+          <video src="pinch-scroll-demo.mp4" autoplay muted loop playsinline preload="none"></video>
         </div>
       </div>
     </div>
@@ -607,9 +703,12 @@
       <summary>Other Projects</summary>
       <div class="other-projects-inner">
 
-    <div class="project">
+    <div class="project fade-in">
       <div class="project-info">
-        <div class="project-name">BizPilot</div>
+        <div class="project-header">
+          <div class="project-name">BizPilot</div>
+          <span class="project-date">2025</span>
+        </div>
         <div class="project-desc">AI-powered business improvement tool. Attach your company's website link and AI analyzes it with full context, then helps you identify and improve any part of your business — marketing, copy, UX, and more.</div>
         <div class="tags">
           <span class="tag">AI</span>
@@ -627,14 +726,17 @@
           </a>
         </div>
         <div class="project-images">
-          <video src="bizpilot-demo.mov" autoplay muted loop playsinline></video>
+          <video src="bizpilot-demo.mp4" autoplay muted loop playsinline preload="none"></video>
         </div>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project fade-in">
       <div class="project-info">
-        <div class="project-name">Pin Your Song</div>
+        <div class="project-header">
+          <div class="project-name">Pin Your Song</div>
+          <span class="project-date">2025</span>
+        </div>
         <div class="project-desc">A public shared board where anyone can pin their favourite songs, browse what others are listening to, and like tracks. Built with Next.js and Supabase for real-time updates.</div>
         <div class="tags">
           <span class="tag">Next.js</span>
@@ -652,16 +754,19 @@
           </a>
         </div>
         <div class="project-images">
-          <img src="pinyoursong-landing.png" alt="Pin Your Song landing page" />
-          <img src="pinyoursong-create.png" alt="Pin Your Song create card page" />
-          <img src="pinyoursong-wall.png" alt="Pin Your Song wall page" />
+          <img src="pinyoursong-landing.webp" alt="Pin Your Song landing page" loading="lazy" />
+          <img src="pinyoursong-create.webp" alt="Pin Your Song create card page" loading="lazy" />
+          <img src="pinyoursong-wall.png" alt="Pin Your Song wall page" loading="lazy" />
         </div>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project fade-in">
       <div class="project-info">
-        <div class="project-name">Personal Portfolio</div>
+        <div class="project-header">
+          <div class="project-name">Personal Portfolio</div>
+          <span class="project-date">2025</span>
+        </div>
         <div class="project-desc">This site. Hand-coded HTML and CSS with glassmorphic cards, staggered animations, and a fixed oil-painting background. No frameworks, no dependencies.</div>
         <div class="tags">
           <span class="tag">HTML</span>
@@ -674,7 +779,7 @@
           </a>
         </div>
         <div class="project-images">
-          <video src="portfolio-demo.mov" autoplay muted loop playsinline style="max-height:300px;max-width:100%;align-self:center;"></video>
+          <video src="portfolio-demo.mp4" autoplay muted loop playsinline style="max-height:300px;max-width:100%;align-self:center;"></video>
         </div>
       </div>
     </div>
@@ -683,36 +788,36 @@
     </details>
 
     <div style="margin-top: 48px;"></div>
-    <div class="section-label" style="animation-delay: 0.7s;">Achievements</div>
+    <div class="section-label fade-in">Achievements</div>
 
-    <div class="achievement" style="animation-delay: 0.75s;">
+    <div class="achievement fade-in">
       <div class="achievement-header">
         <div class="achievement-name">1st Place — Games4Change Student Game Jam HK 2026</div>
         <span class="achievement-badge">🥇 1st Place</span>
       </div>
-      <div class="achievement-desc">Solo entry. Competed against 40+ HKU university students across 10+ teams. Built and presented Reef Defender in under 6 hours.</div>
+      <div class="achievement-desc">Solo entry. Competed against 40+ HKU university students across 10+ teams. Built and presented <a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Reef Defender</a> in under 6 hours.</div>
     </div>
 
-    <div class="achievement" style="animation-delay: 0.8s;">
+    <div class="achievement fade-in">
       <div class="achievement-header">
         <div class="achievement-name">Strive 2026</div>
         <span class="achievement-badge">🥈 2nd Place</span>
       </div>
       <div class="achievement-desc">Placed 2nd out of 60+ teams at UBC Sauder's largest high school business case competition (Prosper Foundation). Built and demoed a working (DeepSeek 2.0) manufacturing app infront of 250+ students and 10+ judges.</div>
       <div class="achievement-images">
-        <video src="strive-demo.mov" autoplay muted loop playsinline></video>
-        <img src="strive-team.png" alt="Strive 2026 team photo" />
-        <img src="strive-presentation.jpg" alt="Strive 2026 presentation on stage" />
+        <video src="strive-demo.mp4" autoplay muted loop playsinline preload="none"></video>
+        <img src="strive-team.webp" alt="Strive 2026 team photo" loading="lazy" />
+        <img src="strive-presentation.jpg" alt="Strive 2026 presentation on stage" loading="lazy" />
       </div>
     </div>
 
-    <div class="achievement" style="animation-delay: 0.85s;">
+    <div class="achievement fade-in">
       <div class="achievement-header">
         <div class="achievement-name">Instagram Content Creator</div>
       </div>
       <div class="achievement-desc">Gained 2,000+ followers and 1.5M+ views creating tech and lifestyle content on <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Instagram</a>.</div>
       <div class="achievement-images">
-        <img src="instagram-stats.png" alt="Instagram analytics showing 1.5M+ views" />
+        <img src="instagram-stats.webp" alt="Instagram analytics showing 1.5M+ views" loading="lazy" />
       </div>
     </div>
 
@@ -723,5 +828,16 @@
     <div class="footer">Built by Matthew &middot; 2026</div>
   </div>
 
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
