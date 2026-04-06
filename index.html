@@ -12,11 +12,18 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Matthew Chan — Portfolio">
   <meta name="twitter:description" content="Grade 10 student in Vancouver building AI-powered tools, gesture-controlled games, and full-stack apps.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scrollbar-gutter: stable;
     }
 
     :root {
@@ -29,9 +36,11 @@
     body {
       min-height: 100vh;
       background: #0a0606;
-      font-family: Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       color: var(--text-primary);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ---- Background ---- */
@@ -54,40 +63,72 @@
       position: fixed;
       inset: 0;
       z-index: 1;
-      background: rgba(8, 4, 4, 0.55);
+      background: rgba(8, 4, 4, 0.78);
     }
 
-    /* ---- Layout ---- */
-    .page {
+    /* ---- Layout: sticky identity rail + scrolling main ---- */
+    .layout {
       position: relative;
       z-index: 10;
-      max-width: 500px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 140px 24px 80px;
+      padding: 72px 48px 72px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 72px;
       min-height: 100vh;
-      text-align: center;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 72px;
+      align-self: start;
+      text-align: left;
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+    .sidebar::-webkit-scrollbar { width: 0; }
+    .sidebar { scrollbar-width: none; }
+
+    .main { min-width: 0; text-align: left; }
+
+    @media (max-width: 960px) {
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 56px 24px 72px;
+      }
+      .sidebar {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        text-align: center;
+        padding-right: 0;
+      }
+      .main { text-align: center; }
     }
 
     /* ---- Profile Picture ---- */
     .profile-pic {
-      width: 90px;
-      height: 90px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center 20%;
-      border: 2px solid rgba(255, 255, 255, 0.12);
-      margin-bottom: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      margin-bottom: 18px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
       animation: fadeIn 0.6s 0.05s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     /* ---- Name ---- */
     .name {
-      font-size: 40px;
-      font-weight: bold;
-      letter-spacing: -0.5px;
-      line-height: 1.05;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.02;
       margin-bottom: 14px;
-      text-shadow: 0 2px 30px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.9);
       animation: fadeIn 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -99,31 +140,48 @@
     /* ---- Bio ---- */
     .bio {
       color: var(--text-secondary);
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.6;
-      margin-bottom: 24px;
-      text-shadow: 0 1px 16px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.7);
+      margin-bottom: 16px;
       animation: fadeIn 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     /* ---- Status line ---- */
     .status {
-      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
       color: var(--accent);
-      opacity: 0.8;
+      opacity: 0.9;
       margin-bottom: 20px;
       letter-spacing: 0.3px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
       animation: fadeIn 0.6s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     /* ---- Socials — inline, minimal ---- */
     .socials {
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 36px;
+      justify-content: flex-start;
+      gap: 14px;
+      margin-bottom: 22px;
       animation: fadeIn 0.6s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @media (max-width: 960px) {
+      .socials { justify-content: center; }
     }
 
     .socials a {
@@ -147,35 +205,62 @@
 
     /* ---- Projects ---- */
     .section-label {
-      font-size: 10px;
-      font-weight: bold;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--text-secondary);
-      margin-bottom: 14px;
-      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+      margin-bottom: 18px;
+      text-align: left;
       animation: fadeIn 0.6s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @media (max-width: 960px) {
+      .section-label { text-align: center; }
     }
 
     .project {
-      background: rgba(12, 8, 6, 0.3);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(12, 8, 6, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 12px;
-      padding: 20px 22px;
-      margin-bottom: 10px;
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 12px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease;
       text-align: left;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
       overflow: hidden;
     }
 
     .project:hover {
-      background: rgba(232, 115, 90, 0.1);
-      border-color: rgba(232, 115, 90, 0.15);
-      transform: translateX(4px);
+      background: rgba(232, 115, 90, 0.09);
+      border-color: rgba(232, 115, 90, 0.22);
+    }
+
+    /* Featured project — hero treatment for the flagship */
+    .project.featured {
+      padding: 28px 30px;
+      border: 1px solid rgba(232, 115, 90, 0.28);
+      background: linear-gradient(180deg, rgba(232, 115, 90, 0.08), rgba(12, 8, 6, 0.5));
+      box-shadow: 0 6px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(232, 115, 90, 0.05);
+      margin-bottom: 18px;
+    }
+    .project.featured .project-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .project.featured .project-images {
+      order: -1;
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+    .project.featured .project-name {
+      font-size: 22px;
+      letter-spacing: -0.4px;
+    }
+    .project.featured .project-desc {
+      font-size: 14px;
     }
 
     .project-info { flex: 1; }
@@ -187,10 +272,10 @@
     }
 
     .project-name {
-      font-weight: bold;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.2px;
       margin-bottom: 4px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
     }
 
     .project-date {
@@ -204,11 +289,10 @@
     }
 
     .project-desc {
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 8px;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      line-height: 1.55;
+      margin-bottom: 10px;
     }
 
     .tags {
@@ -232,21 +316,60 @@
       opacity: 0.4;
     }
 
+    /* Tech stack chips in sidebar */
     .skills {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px 10px;
-      margin-bottom: 36px;
+      justify-content: flex-start;
+      gap: 6px;
+      margin-bottom: 22px;
       animation: fadeIn 0.6s 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @media (max-width: 960px) {
+      .skills { justify-content: center; }
     }
 
     .skills .tag {
-      opacity: 0.85;
+      opacity: 0.9;
+      padding: 4px 9px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      color: var(--text-secondary);
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 10.5px;
+      font-weight: 500;
     }
 
     .skills .tag::after {
       display: none;
+    }
+
+    .sidebar-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      opacity: 0.55;
+      margin-bottom: 10px;
+    }
+
+    .sidebar .cta-button {
+      margin-top: 4px;
+      font-size: 13px;
+      padding: 12px 22px;
+    }
+    @media (max-width: 960px) {
+      .sidebar .cta-button { align-self: center; }
+    }
+
+    .sidebar-footer {
+      margin-top: 28px;
+      font-size: 10px;
+      color: rgba(245, 235, 230, 0.25);
+      letter-spacing: 0.3px;
     }
 
     .tag:last-child::after {
@@ -303,15 +426,60 @@
     .project-images img,
     .project-images video {
       width: 100%;
-      border-radius: 6px;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      opacity: 0.85;
-      transition: opacity 0.3s ease;
+      background: rgba(0, 0, 0, 0.2);
     }
 
-    .project-images img:hover,
-    .project-images video:hover {
-      opacity: 1;
+    .project.featured .project-images img,
+    .project.featured .project-images video {
+      max-height: 380px;
+    }
+
+    /* Projects grid — 2-col on desktop, 1-col on narrow */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 760px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    .projects-grid .project { margin-bottom: 0; padding: 18px 20px; }
+    .projects-grid .project-name { font-size: 15px; }
+    .projects-grid .project-desc { font-size: 12.5px; line-height: 1.5; }
+    .projects-grid .project-images img,
+    .projects-grid .project-images video { max-height: 180px; }
+
+    /* Horizontal video carousel — used for Gesture Arcade */
+    .video-carousel {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      margin: 12px -20px 0;
+      padding: 4px 20px 12px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+    }
+    .video-carousel::-webkit-scrollbar { height: 6px; }
+    .video-carousel::-webkit-scrollbar-track { background: transparent; }
+    .video-carousel::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+    }
+    .video-carousel video {
+      flex: 0 0 auto;
+      width: 280px;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      scroll-snap-align: start;
+      background: rgba(0, 0, 0, 0.4);
     }
 
     .img-placeholder {
@@ -330,16 +498,38 @@
 
     /* ---- Achievements ---- */
     .achievement {
-      background: rgba(12, 8, 6, 0.3);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(12, 8, 6, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 12px;
-      padding: 20px 22px;
-      margin-bottom: 10px;
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 12px;
       text-align: left;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
+
+    /* Featured achievement — hero treatment for the flagship win */
+    .achievement.featured {
+      padding: 28px 30px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      background: linear-gradient(180deg, rgba(255, 215, 0, 0.07), rgba(12, 8, 6, 0.5));
+      box-shadow: 0 6px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 215, 0, 0.05);
+      margin-bottom: 18px;
+    }
+    .achievement.featured .achievement-name {
+      font-size: 19px;
+      letter-spacing: -0.2px;
+    }
+    .achievement.featured .achievement-images {
+      order: -1;
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+    .achievement.featured { display: flex; flex-direction: column; }
+    .achievement.featured .achievement-header { order: 1; }
+    .achievement.featured .achievement-desc { order: 2; }
 
     .achievement:hover {
       background: rgba(255, 215, 0, 0.05);
@@ -355,9 +545,9 @@
     }
 
     .achievement-name {
-      font-weight: bold;
-      font-size: 16px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.2px;
     }
 
     .achievement-badge {
@@ -372,10 +562,9 @@
     }
 
     .achievement-desc {
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text-secondary);
       line-height: 1.6;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       margin-bottom: 4px;
     }
 
@@ -389,46 +578,69 @@
     .achievement-images img,
     .achievement-images video {
       width: 100%;
-      border-radius: 6px;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      opacity: 0.85;
-      transition: opacity 0.3s ease;
+      background: rgba(0, 0, 0, 0.2);
     }
 
-    .achievement-images img:hover,
-    .achievement-images video:hover {
-      opacity: 1;
+    .achievement.featured .achievement-images img,
+    .achievement.featured .achievement-images video {
+      max-height: 320px;
     }
+
+    /* Achievements grid — 2-col for non-featured */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 760px) {
+      .achievements-grid { grid-template-columns: 1fr; }
+    }
+    .achievements-grid .achievement { margin-bottom: 0; padding: 18px 20px; }
+    .achievements-grid .achievement-name { font-size: 15px; }
+    .achievements-grid .achievement-desc { font-size: 12.5px; line-height: 1.55; }
+    .achievements-grid .achievement-images img,
+    .achievements-grid .achievement-images video { max-height: 160px; object-fit: contain; background: rgba(0, 0, 0, 0.3); }
     /* ---- CTA ---- */
     .cta {
-      margin-top: 48px;
+      margin-top: 56px;
+      padding: 40px 32px;
       text-align: center;
+      border-radius: 14px;
+      background: rgba(12, 8, 6, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       animation: fadeIn 0.6s 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .cta p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      font-size: 17px;
+      color: var(--text-primary);
+      line-height: 1.5;
+      font-weight: 600;
+      margin-bottom: 18px;
     }
 
-    .cta a {
-      color: var(--accent);
+    .cta-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #1a0808;
       text-decoration: none;
-      font-weight: bold;
-      transition: opacity 0.3s ease;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      border-radius: 999px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: 0 4px 20px rgba(232, 115, 90, 0.35);
     }
-
-    .cta a:hover {
-      opacity: 0.7;
-    }
-
-    .footer {
-      margin-top: 48px;
-      font-size: 11px;
-      color: rgba(245, 235, 230, 0.2);
-      animation: fadeIn 0.6s 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    .cta-button:hover {
+      transform: translateY(-2px);
+      background: #f0836a;
+      box-shadow: 0 6px 24px rgba(232, 115, 90, 0.5);
     }
 
     /* ---- Other Projects (collapsed) ---- */
@@ -443,13 +655,15 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--text-secondary);
-      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
       cursor: pointer;
       list-style: none;
-      text-align: center;
+      text-align: left;
       margin-bottom: 14px;
       opacity: 0.7;
       transition: opacity 0.3s ease;
+    }
+    @media (max-width: 960px) {
+      .other-projects summary { text-align: center; }
     }
 
     .other-projects summary::-webkit-details-marker { display: none; }
@@ -490,13 +704,14 @@
   </div>
   <div class="bg-overlay"></div>
 
-  <div class="page">
-    <img src="profile.jpg" alt="Matthew Chan" class="profile-pic" />
-    <h1 class="name">Matthew Chan</h1>
-    <p class="bio">I build AI powered tools that solve real problems, from gesture-controlled games to business intelligence agents. As a grade 10 student in Vancouver, shipping full-stack apps with Claude Code.</p>
-    <p class="status">Currently shipping tools with Claude Code</p>
+  <div class="layout">
+    <aside class="sidebar">
+      <img src="profile.jpg" alt="Matthew Chan" class="profile-pic" />
+      <h1 class="name">Matthew Chan</h1>
+      <p class="bio">I find problems worth solving and ship products people actually use. Grade 10 in Vancouver — won 1st at G4C Hong Kong, shipped to 80+ real users, and placed 2nd at UBC Sauder's largest business competition.</p>
+      <p class="status">Open to PM internships</p>
 
-    <div class="socials">
+      <div class="socials">
       <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -516,21 +731,23 @@
       <a href="https://www.linkedin.com/in/matthew-chan-12546339b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-    </div>
+      </div>
 
-    <div class="section-label" style="animation-delay: 0.3s;">Tech Stack</div>
-    <div class="skills">
-      <span class="tag">React</span>
-      <span class="tag">Next.js</span>
-      <span class="tag">TypeScript</span>
-      <span class="tag">MediaPipe</span>
-      <span class="tag">TensorFlow.js</span>
-      <span class="tag">Supabase</span>
-      <span class="tag">Claude API</span>
-      <span class="tag">Chrome Extensions</span>
-      <span class="tag">HTML/CSS</span>
-    </div>
+      <div class="sidebar-label">What I Do</div>
+      <div class="skills">
+        <span class="tag">User Research</span>
+        <span class="tag">Rapid Prototyping</span>
+        <span class="tag">Ship &amp; Iterate</span>
+        <span class="tag">Data-Driven Decisions</span>
+        <span class="tag">Full-Stack Development</span>
+      </div>
 
+      <a href="mailto:matthewashere0@gmail.com" class="cta-button">Email me</a>
+
+      <div class="sidebar-footer">&copy; 2026 Matthew Chan</div>
+    </aside>
+
+    <main class="main">
     <div class="section-label fade-in">Projects</div>
 
     <div class="project fade-in">
@@ -539,11 +756,11 @@
           <div class="project-name">Reef Defender</div>
           <span class="project-date">2026</span>
         </div>
-        <div class="project-desc">A webcam-controlled reef defense game built with MediaPipe hand-tracking. Players use hand gestures to protect coral reefs from incoming threats. Won 1st place at the Games4Change Student Game Jam HK 2026 — solo entry competing against 40+ HKU university students across 10+ teams. Submitted to G4C Global 2026.</div>
+        <div class="project-desc">Won 1st place at Games4Change Student Game Jam HK 2026 — designed and shipped a coral reef education game in under 6 hours, solo against 40+ HKU university students across 10+ teams. Identified the brief's core tension (engagement vs. education), chose gesture controls to make the learning physical. Submitted to G4C Global 2026.</div>
         <div class="tags">
-          <span class="tag">MediaPipe</span>
-          <span class="tag">Hand Tracking</span>
-          <span class="tag">Game</span>
+          <span class="tag">1st Place</span>
+          <span class="tag">Solo Entry</span>
+          <span class="tag">6-Hour Ship</span>
         </div>
         <div class="project-links">
           <a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -556,7 +773,6 @@
           </a>
         </div>
         <div class="project-images">
-          <img src="reef-defender-landing.webp" alt="Reef Defender game menu" loading="lazy" />
           <video src="reef-defender-demo.mp4" autoplay muted loop playsinline preload="none"></video>
         </div>
       </div>
@@ -568,12 +784,11 @@
           <div class="project-name">Kairo</div>
           <span class="project-date">2026</span>
         </div>
-        <div class="project-desc">An AI-powered tool that turns students' extracurriculars into a structured personal profile with skills extraction and personalized university guidance. Shipped to 80+ users, collected real feedback, and iterated based on user behavior — 344 visitors, 627 page views. Built with React, TypeScript, Supabase, and Claude API.</div>
+        <div class="project-desc">Students struggle to articulate extracurriculars to universities. Kairo uses AI to extract skills and generate structured profiles with personalized guidance. Shipped to 80+ users, collected feedback, and iterated based on drop-off behavior — 344 visitors, 627 page views. Currently in v2 based on user insights.</div>
         <div class="tags">
-          <span class="tag">React</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Supabase</span>
-          <span class="tag">AI</span>
+          <span class="tag">0 &rarr; 80+ Users</span>
+          <span class="tag">User Research</span>
+          <span class="tag">AI Product</span>
         </div>
         <div class="project-links">
           <a href="https://kairokairo.com/" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -586,7 +801,6 @@
           </a>
         </div>
         <div class="project-images">
-          <img src="kairo-landing.webp" alt="Kairo landing page" loading="lazy" />
           <video src="kairo-demo.mp4" autoplay muted loop playsinline preload="none"></video>
         </div>
       </div>
@@ -598,11 +812,10 @@
           <div class="project-name">Gesture Arcade</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">A series of 10+ browser-based games controlled entirely by hand gestures, no keyboard, no mouse. Uses MediaPipe and TensorFlow.js for real-time hand tracking at 30fps to detect gestures and translate them into game inputs.</div>
+        <div class="project-desc">Explored a simple question: what if you could play browser games with just your hands? Built 10+ gesture-controlled games — no keyboard, no mouse. Designed each game around the constraints of hand tracking (latency, gesture ambiguity) rather than fighting them. Live-tested with friends and iterated on gesture detection thresholds.</div>
         <div class="tags">
-          <span class="tag">MediaPipe</span>
-          <span class="tag">TensorFlow.js</span>
-          <span class="tag">Canvas</span>
+          <span class="tag">10+ Games Shipped</span>
+          <span class="tag">Constraint-Driven Design</span>
         </div>
         <div class="project-links">
           <a href="https://gesturearcadefinal.vercel.app?_vercel_share=nZ2J0GrqpqbkpCMWfDdzWviF6n8chqZv" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -614,7 +827,7 @@
             GitHub
           </a>
         </div>
-        <div class="project-images">
+        <div class="video-carousel">
           <video src="gesture-arcade-demo.mp4" autoplay muted loop playsinline preload="none"></video>
           <video src="gesture-arcade-demo-1.mp4" autoplay muted loop playsinline preload="none"></video>
           <video src="gesture-arcade-demo-2.mp4" autoplay muted loop playsinline preload="none"></video>
@@ -623,17 +836,21 @@
       </div>
     </div>
 
+    <details class="other-projects">
+      <summary>Other Projects</summary>
+      <div class="other-projects-inner">
+      <div class="projects-grid">
+
     <div class="project fade-in">
       <div class="project-info">
         <div class="project-header">
           <div class="project-name">Zombie Flick</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">Flick zombies off the screen using your fingers. Built real-time hand tracking with MediaPipe to detect flick gestures in-browser and translate finger movements into projectile physics.</div>
+        <div class="project-desc">Flick zombies off the screen using your fingers. Real-time hand tracking detects flick gestures and translates finger movements into projectile physics.</div>
         <div class="tags">
           <span class="tag">MediaPipe</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Real-time</span>
+          <span class="tag">Physics</span>
         </div>
         <div class="project-links">
           <a href="https://air-zombie-flick-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -646,7 +863,7 @@
           </a>
         </div>
         <div class="project-images">
-          <video src="zombie-flick-demo.mp4" autoplay muted loop playsinline style="max-height:300px;max-width:100%;align-self:center;"></video>
+          <video src="zombie-flick-demo.mp4" autoplay muted loop playsinline preload="none"></video>
         </div>
       </div>
     </div>
@@ -657,10 +874,9 @@
           <div class="project-name">Presentation Pincher</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">Chrome extension that detects pinch gestures via your webcam to switch slides in presentation mode — works with Canva, Google Slides, PowerPoint, and more. No clicker needed.</div>
+        <div class="project-desc">Chrome extension that detects pinch gestures via webcam to switch slides — works with Canva, Google Slides, PowerPoint. No clicker needed.</div>
         <div class="tags">
           <span class="tag">Chrome Extension</span>
-          <span class="tag">MediaPipe</span>
           <span class="tag">Gesture Control</span>
         </div>
         <div class="project-links">
@@ -681,11 +897,10 @@
           <div class="project-name">Pinch To Scroll YT Shorts</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">Chrome extension that uses your webcam to detect pinch gestures via MediaPipe, letting you scroll through YouTube Shorts hands-free. No clicks, no taps, just pinch.</div>
+        <div class="project-desc">Chrome extension — scroll through YouTube Shorts hands-free using pinch gestures detected via webcam.</div>
         <div class="tags">
           <span class="tag">Chrome Extension</span>
-          <span class="tag">MediaPipe</span>
-          <span class="tag">WebRTC</span>
+          <span class="tag">Hands-Free UX</span>
         </div>
         <div class="project-links">
           <a href="https://github.com/matthewcycmb/PinchScrollReels" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -698,10 +913,6 @@
         </div>
       </div>
     </div>
-
-    <details class="other-projects">
-      <summary>Other Projects</summary>
-      <div class="other-projects-inner">
 
     <div class="project fade-in">
       <div class="project-info">
@@ -784,48 +995,55 @@
       </div>
     </div>
 
+      </div><!-- /.projects-grid -->
       </div>
     </details>
 
-    <div style="margin-top: 48px;"></div>
+    <div style="margin-top: 56px;"></div>
     <div class="section-label fade-in">Achievements</div>
 
+    <div class="achievements-grid">
+
     <div class="achievement fade-in">
       <div class="achievement-header">
-        <div class="achievement-name">1st Place — Games4Change Student Game Jam HK 2026</div>
+        <div class="achievement-name">Strive 2026 — High School Case Competition</div>
+        <span class="achievement-badge">🥈 2nd / 60+ Teams</span>
+      </div>
+      <div class="achievement-desc">Placed 2nd out of 60+ teams at Strive, a high school case competition hosted at UBC Sauder. Identified a manufacturing inefficiency, built a working AI-powered solution, and pitched to 10+ judges and 250+ students — from problem definition to live demo in one weekend.</div>
+      <div class="achievement-images">
+        <img src="strive-team.webp" alt="Strive 2026 team photo" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="achievement fade-in">
+      <div class="achievement-header">
+        <div class="achievement-name">Games4Change Game Jam HK 2026</div>
         <span class="achievement-badge">🥇 1st Place</span>
       </div>
-      <div class="achievement-desc">Solo entry. Competed against 40+ HKU university students across 10+ teams. Built and presented <a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Reef Defender</a> in under 6 hours.</div>
-    </div>
-
-    <div class="achievement fade-in">
-      <div class="achievement-header">
-        <div class="achievement-name">Strive 2026</div>
-        <span class="achievement-badge">🥈 2nd Place</span>
-      </div>
-      <div class="achievement-desc">Placed 2nd out of 60+ teams at UBC Sauder's largest high school business case competition (Prosper Foundation). Built and demoed a working (DeepSeek 2.0) manufacturing app infront of 250+ students and 10+ judges.</div>
+      <div class="achievement-desc">Solo entry as a high school student. Identified the brief's core tension (engagement vs. education), scoped a viable product in 30 minutes, and shipped <a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Reef Defender</a> in 6 hours — beating 40+ HKU university students across 10+ teams.</div>
       <div class="achievement-images">
-        <video src="strive-demo.mp4" autoplay muted loop playsinline preload="none"></video>
-        <img src="strive-team.webp" alt="Strive 2026 team photo" loading="lazy" />
-        <img src="strive-presentation.jpg" alt="Strive 2026 presentation on stage" loading="lazy" />
+        <img src="g4c-award.webp" alt="Receiving the Games4Change Grand Prize for Reef Defender at The University of Hong Kong" loading="lazy" />
       </div>
     </div>
 
     <div class="achievement fade-in">
       <div class="achievement-header">
-        <div class="achievement-name">Instagram Content Creator</div>
+        <div class="achievement-name">Instagram — Content-Market Fit</div>
       </div>
-      <div class="achievement-desc">Gained 2,000+ followers and 1.5M+ views creating tech and lifestyle content on <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Instagram</a>.</div>
+      <div class="achievement-desc">Built an audience of 2,000+ followers and 1.5M+ views on <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Instagram</a> — learned content-market fit, audience retention, and distribution through experimentation.</div>
       <div class="achievement-images">
         <img src="instagram-stats.webp" alt="Instagram analytics showing 1.5M+ views" loading="lazy" />
       </div>
     </div>
 
+    </div><!-- /.achievements-grid -->
+
     <div class="cta">
-      <p>I love turning ideas into real products, from AI agents to gesture-controlled games. I'm always building, and always shipping. If you're working on something interesting, contact me here: <a href="mailto:matthewashere0@gmail.com">matthewashere0@gmail.com</a></p>
+      <p>Working on something interesting? Let's talk.</p>
+      <a href="mailto:matthewashere0@gmail.com" class="cta-button">Email me</a>
     </div>
 
-    <div class="footer">Built by Matthew &middot; 2026</div>
+    </main>
   </div>
 
 <script>
