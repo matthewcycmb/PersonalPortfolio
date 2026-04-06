@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matthew Chan — Portfolio</title>
+  <title>Matthew Chan | Portfolio</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <meta property="og:title" content="Matthew Chan — Portfolio">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Matthew Chan | Portfolio">
   <meta property="og:description" content="Grade 10 student in Vancouver building AI-powered tools, gesture-controlled games, and full-stack apps.">
-  <meta property="og:image" content="profile.jpg">
+  <meta property="og:url" content="https://personalportfoliomatthew.vercel.app/">
+  <meta property="og:image" content="https://personalportfoliomatthew.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Matthew Chan — Portfolio">
+  <meta name="twitter:title" content="Matthew Chan | Portfolio">
   <meta name="twitter:description" content="Grade 10 student in Vancouver building AI-powered tools, gesture-controlled games, and full-stack apps.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,24 +115,24 @@
 
     /* ---- Profile Picture ---- */
     .profile-pic {
-      width: 112px;
-      height: 112px;
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center 20%;
       border: 2px solid rgba(255, 255, 255, 0.14);
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
       animation: fadeIn 0.6s 0.05s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     /* ---- Name ---- */
     .name {
-      font-size: 38px;
+      font-size: 32px;
       font-weight: 800;
       letter-spacing: -0.8px;
       line-height: 1.02;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       animation: fadeIn 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -140,9 +144,9 @@
     /* ---- Bio ---- */
     .bio {
       color: var(--text-secondary);
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.55;
+      margin-bottom: 10px;
       animation: fadeIn 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -154,7 +158,7 @@
       font-size: 11px;
       color: var(--accent);
       opacity: 0.9;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
       letter-spacing: 0.3px;
       animation: fadeIn 0.6s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
@@ -177,7 +181,7 @@
       display: flex;
       justify-content: flex-start;
       gap: 14px;
-      margin-bottom: 22px;
+      margin-bottom: 14px;
       animation: fadeIn 0.6s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     @media (max-width: 960px) {
@@ -357,12 +361,38 @@
     }
 
     .sidebar .cta-button {
-      margin-top: 4px;
+      margin-top: 0px;
       font-size: 13px;
       padding: 12px 22px;
     }
+    .sidebar .share-button {
+      margin-top: 0px;
+      margin-left: 8px;
+      font-size: 11px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary);
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar .share-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .sidebar .share-button.copied {
+      border-color: rgba(100, 220, 100, 0.4);
+      color: rgba(100, 220, 100, 0.9);
+    }
     @media (max-width: 960px) {
-      .sidebar .cta-button { align-self: center; }
+      .sidebar .cta-button, .sidebar .share-button { align-self: center; }
     }
 
     .sidebar-footer {
@@ -593,9 +623,12 @@
     /* Achievements grid — 2-col for non-featured */
     .achievements-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       margin-bottom: 14px;
+    }
+    @media (max-width: 960px) {
+      .achievements-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 760px) {
       .achievements-grid { grid-template-columns: 1fr; }
@@ -708,7 +741,7 @@
     <aside class="sidebar">
       <img src="profile.jpg" alt="Matthew Chan" class="profile-pic" />
       <h1 class="name">Matthew Chan</h1>
-      <p class="bio">I find problems worth solving and ship products people actually use. Grade 10 in Vancouver — won 1st at G4C Hong Kong, shipped to 80+ real users, and placed 2nd at Strive, a high school case competition hosted at UBC Sauder.</p>
+      <p class="bio">I find problems worth solving and ship products people actually use. Grade 10 in Vancouver, won 1st at G4C Hong Kong, shipped Kairo to 80+ real users, and placed 2nd at Strive, a high school case competition hosted at UBC Sauder.</p>
       <p class="status">Open to PM internships</p>
 
       <div class="socials">
@@ -743,6 +776,10 @@
       </div>
 
       <a href="https://mail.google.com/mail/?view=cm&to=matthewchan071010@gmail.com" target="_blank" class="cta-button">Email me</a>
+      <button class="share-button" onclick="copyLink(this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share my profile
+      </button>
 
       <div class="sidebar-footer">&copy; 2026 Matthew Chan</div>
     </aside>
@@ -756,7 +793,7 @@
           <div class="project-name">Reef Defender</div>
           <span class="project-date">2026</span>
         </div>
-        <div class="project-desc">Won 1st place at Games4Change Student Game Jam HK 2026 — designed and shipped a coral reef education game in under 6 hours, solo against 40+ HKU university students across 10+ teams. Identified the brief's core tension (engagement vs. education), chose gesture controls to make the learning physical. Submitted to G4C Global 2026.</div>
+        <div class="project-desc">Won 1st place at Games4Change Student Game Jam HK 2026. Designed and shipped a coral reef education game in under 6 hours, solo against 40+ HKU university students across 10+ teams. Identified the brief's core tension (engagement vs. education), chose gesture controls to make the learning physical. Submitted to G4C Global 2026.</div>
         <div class="tags">
           <span class="tag">1st Place</span>
           <span class="tag">Solo Entry</span>
@@ -784,7 +821,7 @@
           <div class="project-name">Kairo</div>
           <span class="project-date">2026</span>
         </div>
-        <div class="project-desc">Students struggle to articulate extracurriculars to universities. Kairo uses AI to extract skills and generate structured profiles with personalized guidance. Shipped to 80+ users, collected feedback, and iterated based on drop-off behavior — 344 visitors, 627 page views. Currently in v2 based on user insights.</div>
+        <div class="project-desc">Students struggle to articulate extracurriculars to universities. Kairo uses AI to extract skills and generate structured profiles with personalized guidance. Shipped to 80+ users, collected feedback, and iterated based on drop-off behavior. 344 visitors, 627 page views. Currently in v2 based on user insights.</div>
         <div class="tags">
           <span class="tag">0 &rarr; 80+ Users</span>
           <span class="tag">User Research</span>
@@ -812,7 +849,7 @@
           <div class="project-name">Gesture Arcade</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">Explored a simple question: what if you could play browser games with just your hands? Built 10+ gesture-controlled games — no keyboard, no mouse. Designed each game around the constraints of hand tracking (latency, gesture ambiguity) rather than fighting them. Live-tested with friends and iterated on gesture detection thresholds.</div>
+        <div class="project-desc">Explored a simple question: what if you could play browser games with just your hands? Built 10+ gesture-controlled games, no keyboard, no mouse. Designed each game around the constraints of hand tracking (latency, gesture ambiguity) rather than fighting them. Live-tested with friends and iterated on gesture detection thresholds.</div>
         <div class="tags">
           <span class="tag">10+ Games Shipped</span>
           <span class="tag">Constraint-Driven Design</span>
@@ -874,7 +911,7 @@
           <div class="project-name">Presentation Pincher</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">Chrome extension that detects pinch gestures via webcam to switch slides — works with Canva, Google Slides, PowerPoint. No clicker needed.</div>
+        <div class="project-desc">Chrome extension that detects pinch gestures via webcam to switch slides. Works with Canva, Google Slides, PowerPoint. No clicker needed.</div>
         <div class="tags">
           <span class="tag">Chrome Extension</span>
           <span class="tag">Gesture Control</span>
@@ -897,7 +934,7 @@
           <div class="project-name">Pinch To Scroll YT Shorts</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">Chrome extension — scroll through YouTube Shorts hands-free using pinch gestures detected via webcam.</div>
+        <div class="project-desc">Chrome extension that scrolls through YouTube Shorts hands-free using pinch gestures detected via webcam.</div>
         <div class="tags">
           <span class="tag">Chrome Extension</span>
           <span class="tag">Hands-Free UX</span>
@@ -920,7 +957,7 @@
           <div class="project-name">BizPilot</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">AI-powered business improvement tool. Attach your company's website link and AI analyzes it with full context, then helps you identify and improve any part of your business — marketing, copy, UX, and more.</div>
+        <div class="project-desc">AI-powered business improvement tool. Attach your company's website link and AI analyzes it with full context, then helps you identify and improve any part of your business including marketing, copy, UX, and more.</div>
         <div class="tags">
           <span class="tag">AI</span>
           <span class="tag">Web Analysis</span>
@@ -938,6 +975,24 @@
         </div>
         <div class="project-images">
           <video src="bizpilot-demo.mp4" autoplay muted loop playsinline preload="none"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="project fade-in">
+      <div class="project-info">
+        <div class="project-header">
+          <div class="project-name">Jarvis</div>
+          <span class="project-date">2025</span>
+        </div>
+        <div class="project-desc">A voice-activated assistant you can summon by saying "Jarvis." It responds to you and opens any link you've configured, hands-free. Set your favourite websites and let Jarvis launch them on command.</div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Voice Recognition</span>
+          <span class="tag">Automation</span>
+        </div>
+        <div class="project-images">
+          <video src="jarvis-demo.mp4" autoplay muted loop playsinline preload="none"></video>
         </div>
       </div>
     </div>
@@ -978,7 +1033,7 @@
           <div class="project-name">Personal Portfolio</div>
           <span class="project-date">2025</span>
         </div>
-        <div class="project-desc">This site. Hand-coded HTML and CSS with glassmorphic cards, staggered animations, and a fixed oil-painting background. No frameworks, no dependencies.</div>
+        <div class="project-desc">This site. Hand-coded HTML and CSS with glassmorphic cards, scroll animations, and a fixed floral painting background. No frameworks, no dependencies.</div>
         <div class="tags">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
@@ -1006,10 +1061,10 @@
 
     <div class="achievement fade-in">
       <div class="achievement-header">
-        <div class="achievement-name">Strive 2026 — High School Case Competition</div>
+        <div class="achievement-name">Strive 2026, High School Case Competition</div>
         <span class="achievement-badge">🥈 2nd / 60+ Teams</span>
       </div>
-      <div class="achievement-desc">Placed 2nd out of 60+ teams at Strive, a high school case competition hosted at UBC Sauder. Identified a manufacturing inefficiency, built a working AI-powered solution, and pitched to 10+ judges and 250+ students — from problem definition to live demo in one weekend.</div>
+      <div class="achievement-desc">Placed 2nd out of 60+ teams at Strive, a high school case competition hosted at UBC Sauder. Proposed transforming DeepSeek into a vertical AI manufacturing tool, leveraging China's manufacturing advantage instead of competing with other tech giants. An all-in-one platform letting people build their products from scratch. Pitched to 10+ judges and 250+ students.</div>
       <div class="achievement-images">
         <img src="strive-team.webp" alt="Strive 2026 team photo" loading="lazy" />
       </div>
@@ -1020,7 +1075,7 @@
         <div class="achievement-name">Games4Change Game Jam HK 2026</div>
         <span class="achievement-badge">🥇 1st Place</span>
       </div>
-      <div class="achievement-desc">Solo entry as a high school student. Identified the brief's core tension (engagement vs. education), scoped a viable product in 30 minutes, and shipped <a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Reef Defender</a> in 6 hours — beating 40+ HKU university students across 10+ teams.</div>
+      <div class="achievement-desc">Solo entry as a high school student. Identified the brief's core tension (engagement vs. education), scoped a viable product in 30 minutes, and shipped <a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Reef Defender</a> in 6 hours, beating 40+ HKU university students across 10+ teams.</div>
       <div class="achievement-images">
         <img src="g4c-award.webp" alt="Receiving the Games4Change Grand Prize for Reef Defender at The University of Hong Kong" loading="lazy" />
       </div>
@@ -1028,9 +1083,9 @@
 
     <div class="achievement fade-in">
       <div class="achievement-header">
-        <div class="achievement-name">Instagram — Content-Market Fit</div>
+        <div class="achievement-name">Instagram, Content-Market Fit</div>
       </div>
-      <div class="achievement-desc">Built an audience of 2,000+ followers and 1.5M+ views on <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Instagram</a> — learned content-market fit, audience retention, and distribution through experimentation.</div>
+      <div class="achievement-desc">Built an audience of 2,000+ followers and 1.5M+ views on <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Instagram</a>. Learned content-market fit, audience retention, and distribution through experimentation.</div>
       <div class="achievement-images">
         <img src="instagram-stats.webp" alt="Instagram analytics showing 1.5M+ views" loading="lazy" />
       </div>
@@ -1056,6 +1111,17 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function copyLink(btn) {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Link copied!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Share my profile';
+    }, 2000);
+  });
+}
 </script>
 </body>
 </html>
