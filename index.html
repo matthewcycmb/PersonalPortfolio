@@ -751,7 +751,7 @@
     <aside class="sidebar">
       <img src="profile.jpg" alt="Matthew Chan" class="profile-pic" />
       <h1 class="name">Matthew Chan</h1>
-      <p class="bio">Shipping games, apps & hardware @ 15.<br>G4C 1st Place · Kairo: 80+ users · Strive: 2nd</p>
+      <p class="bio">building games, apps & hardware @ 15.<br>G4C 1st Place · Kairo: 80+ users · Strive: 2nd</p>
 
       <div class="socials">
       <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -1071,6 +1071,24 @@
     <div class="project fade-in">
       <div class="project-info">
         <div class="project-header">
+          <div class="project-name">Trigger Finger</div>
+          <span class="project-date">2026</span>
+        </div>
+        <div class="project-desc">Ran Google MediaPipe on my laptop to watch for the finger gun flick motion, then streamed the trigger signal over to a Raspberry Pi driving a servo. Every time I flick my finger like I'm firing, the servo snaps in sync in the real world. Dumb little toy, but there is something weirdly satisfying about a gesture I make in the air physically moving something on my desk.</div>
+        <div class="tags">
+          <span class="tag">MediaPipe</span>
+          <span class="tag">Raspberry Pi</span>
+          <span class="tag">Gesture Trigger</span>
+        </div>
+        <div class="video-carousel">
+          <video src="hardware-finger-gun-demo.mp4" autoplay muted loop playsinline preload="none"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="project fade-in">
+      <div class="project-info">
+        <div class="project-header">
           <div class="project-name">Telepathic Servos</div>
           <span class="project-date">2026</span>
         </div>
@@ -1084,6 +1102,26 @@
           <video src="hardware-gesture-servo-demo-2.mp4" autoplay muted loop playsinline preload="none"></video>
           <video src="hardware-gesture-servo-demo.mp4" autoplay muted loop playsinline preload="none"></video>
           <img src="hardware-gesture-servo-setup.webp" alt="Raspberry Pi 4 wired to a PCA9685 and two MG90S servos, with a laptop running MediaPipe hand tracking alongside" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <div class="project fade-in">
+      <div class="project-info">
+        <div class="project-header">
+          <div class="project-name">Motion Reflex</div>
+          <span class="project-date">2026</span>
+        </div>
+        <div class="project-desc">Built a proper power rail on a breadboard so the Raspberry Pi could cleanly feed both a PCA9685 servo driver and a PIR motion sensor without browning anything out. The Pi reads the PIR, and the moment it picks up a hand passing nearby, it fires the servo and then sits on a 4 second cooldown before it can trigger again. First time wiring something that reacts to the room instead of a keyboard, and the breadboard finally clicked as a real thing instead of a diagram in a tutorial.</div>
+        <div class="tags">
+          <span class="tag">PIR Sensor</span>
+          <span class="tag">Breadboard</span>
+          <span class="tag">Raspberry Pi</span>
+        </div>
+        <div class="video-carousel">
+          <video src="hardware-pir-servo-demo.mp4" autoplay muted loop playsinline preload="none"></video>
+          <video src="hardware-pir-servo-demo-2.mp4" autoplay muted loop playsinline preload="none"></video>
+          <img src="hardware-pir-servo-setup.webp" alt="Raspberry Pi 4 wired through a breadboard to a PCA9685 servo driver, a PIR motion sensor, and an MG90S servo" loading="lazy" />
         </div>
       </div>
     </div>
