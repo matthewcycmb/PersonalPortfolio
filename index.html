@@ -360,39 +360,39 @@
       margin-bottom: 10px;
     }
 
-    .sidebar .cta-button {
-      margin-top: 0px;
-      font-size: 13px;
-      padding: 12px 22px;
+    .sidebar-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 4px;
     }
-    .sidebar .share-button {
-      margin-top: 0px;
-      margin-left: 8px;
-      font-size: 11px;
-      padding: 12px 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text-primary);
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      transition: background 0.3s ease, border-color 0.3s ease;
+    .sidebar-connect {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      padding: 9px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(232, 115, 90, 0.35);
+      border-radius: 999px;
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
-    .sidebar .share-button:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
+    .sidebar-connect svg {
+      width: 14px;
+      height: 14px;
     }
-    .sidebar .share-button.copied {
-      border-color: rgba(100, 220, 100, 0.4);
-      color: rgba(100, 220, 100, 0.9);
+    .sidebar-connect:hover {
+      background: rgba(232, 115, 90, 0.12);
+      border-color: rgba(232, 115, 90, 0.55);
+      color: var(--accent);
     }
     @media (max-width: 960px) {
-      .sidebar .cta-button, .sidebar .share-button { align-self: center; }
+      .sidebar-actions { align-items: center; }
     }
 
     .sidebar-footer {
@@ -511,6 +511,15 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       scroll-snap-align: start;
       background: rgba(0, 0, 0, 0.4);
+    }
+    @media (max-width: 760px) {
+      .video-carousel video,
+      .video-carousel img {
+        width: 86vw;
+        max-width: 440px;
+        height: auto;
+        aspect-ratio: 16 / 9;
+      }
     }
 
     .img-placeholder {
@@ -743,7 +752,6 @@
       <img src="profile.jpg" alt="Matthew Chan" class="profile-pic" />
       <h1 class="name">Matthew Chan</h1>
       <p class="bio">Shipping games, apps & hardware @ 15.<br>G4C 1st Place · Kairo: 80+ users · Strive: 2nd</p>
-      <p class="status">Open to PM internships</p>
 
       <div class="socials">
       <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -777,11 +785,12 @@
         <span class="tag">Hardware Prototyping</span>
       </div>
 
-      <a href="https://mail.google.com/mail/?view=cm&to=matthewchan071010@gmail.com" target="_blank" class="cta-button">Email me</a>
-      <button class="share-button" onclick="copyLink(this)">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        Share my profile
-      </button>
+      <div class="sidebar-actions">
+        <a href="https://www.linkedin.com/in/matthew-chan-12546339b/" target="_blank" rel="noopener noreferrer" class="sidebar-connect">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Connect on LinkedIn
+        </a>
+      </div>
 
       <div class="sidebar-footer">&copy; 2026 Matthew Chan</div>
     </aside>
@@ -1082,41 +1091,59 @@
     <div style="margin-top: 56px;"></div>
     <div class="section-label fade-in">Achievements</div>
 
-    <div class="achievements-grid">
-
-    <div class="achievement fade-in">
-      <div class="achievement-header">
-        <div class="achievement-name">Strive 2026, High School Case Competition</div>
-        <span class="achievement-badge">🥈 2nd / 60+ Teams</span>
-      </div>
-      <div class="achievement-desc">Placed 2nd out of 60+ teams at Strive, a high school case competition hosted at UBC Sauder. Proposed transforming DeepSeek into a vertical AI manufacturing tool, leveraging China's manufacturing advantage instead of competing with other tech giants. An all-in-one platform letting people build their products from scratch. Pitched to 10+ judges and 250+ students.</div>
-      <div class="achievement-images">
-        <img src="strive-team.webp" alt="Strive 2026 team photo" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="achievement fade-in">
-      <div class="achievement-header">
-        <div class="achievement-name">Games4Change Game Jam HK 2026</div>
-        <span class="achievement-badge">🥇 1st Place</span>
-      </div>
-      <div class="achievement-desc">Solo entry as a high school student. Identified the brief's core tension (engagement vs. education), scoped a viable product in 30 minutes, and shipped <a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Reef Defender</a> in 6 hours, beating 40+ HKU university students across 10+ teams.</div>
-      <div class="achievement-images">
-        <img src="g4c-award.webp" alt="Receiving the Games4Change Grand Prize for Reef Defender at The University of Hong Kong" loading="lazy" />
+    <div class="project fade-in">
+      <div class="project-info">
+        <div class="project-header">
+          <div class="project-name">Strive, High School Case Competition</div>
+          <span class="project-date">2026</span>
+        </div>
+        <div class="project-desc">Placed 2nd out of 60+ teams at Strive, a high school case competition hosted at UBC Sauder. Proposed transforming DeepSeek into a vertical AI manufacturing tool, leveraging China's manufacturing advantage instead of competing with other tech giants. An all-in-one platform letting people build their products from scratch. Pitched to 10+ judges and 250+ students.</div>
+        <div class="tags">
+          <span class="tag">2nd Place</span>
+          <span class="tag">60+ Teams</span>
+          <span class="tag">UBC Sauder</span>
+        </div>
+        <div class="project-images">
+          <img src="strive-team.webp" alt="Strive 2026 team photo" loading="lazy" />
+        </div>
       </div>
     </div>
 
-    <div class="achievement fade-in">
-      <div class="achievement-header">
-        <div class="achievement-name">Instagram, Content-Market Fit</div>
-      </div>
-      <div class="achievement-desc">Built an audience of 2,000+ followers and 1.5M+ views on <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Instagram</a>. Learned content-market fit, audience retention, and distribution through experimentation.</div>
-      <div class="achievement-images">
-        <img src="instagram-stats.webp" alt="Instagram analytics showing 1.5M+ views" loading="lazy" />
+    <div class="project fade-in">
+      <div class="project-info">
+        <div class="project-header">
+          <div class="project-name">Games4Change Game Jam HK</div>
+          <span class="project-date">2026</span>
+        </div>
+        <div class="project-desc">Solo entry as a high school student. Identified the brief's core tension (engagement vs. education), scoped a viable product in 30 minutes, and shipped <a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Reef Defender</a> in 6 hours, beating 40+ HKU university students across 10+ teams.</div>
+        <div class="tags">
+          <span class="tag">1st Place</span>
+          <span class="tag">Solo Entry</span>
+          <span class="tag">Beat 40+ Uni Students</span>
+        </div>
+        <div class="project-images">
+          <img src="g4c-award.webp" alt="Receiving the Games4Change Grand Prize for Reef Defender at The University of Hong Kong" loading="lazy" />
+        </div>
       </div>
     </div>
 
-    </div><!-- /.achievements-grid -->
+    <div class="project fade-in">
+      <div class="project-info">
+        <div class="project-header">
+          <div class="project-name">Instagram, Content-Market Fit</div>
+          <span class="project-date">Ongoing</span>
+        </div>
+        <div class="project-desc">Built an audience of 2,000+ followers and 1.5M+ views on <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;font-weight:bold;">Instagram</a>. Learned content-market fit, audience retention, and distribution through experimentation.</div>
+        <div class="tags">
+          <span class="tag">1.5M+ Views</span>
+          <span class="tag">2K+ Followers</span>
+          <span class="tag">Organic Growth</span>
+        </div>
+        <div class="project-images">
+          <img src="instagram-stats.webp" alt="Instagram analytics showing 1.5M+ views" loading="lazy" />
+        </div>
+      </div>
+    </div>
 
     <div class="cta">
       <p>Working on something interesting? Let's talk.</p>
@@ -1137,16 +1164,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-function copyLink(btn) {
-  navigator.clipboard.writeText(window.location.href).then(() => {
-    btn.classList.add('copied');
-    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Link copied!';
-    setTimeout(() => {
-      btn.classList.remove('copied');
-      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Share my profile';
-    }, 2000);
-  });
-}
 </script>
 </body>
 </html>
