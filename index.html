@@ -501,10 +501,11 @@
       background: rgba(255, 255, 255, 0.15);
       border-radius: 3px;
     }
-    .video-carousel video {
+    .video-carousel video,
+    .video-carousel img {
       flex: 0 0 auto;
-      width: 280px;
-      height: 160px;
+      width: 500px;
+      height: 300px;
       object-fit: contain;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -568,9 +569,9 @@
 
     .achievement-header {
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
       margin-bottom: 10px;
     }
 
@@ -741,7 +742,7 @@
     <aside class="sidebar">
       <img src="profile.jpg" alt="Matthew Chan" class="profile-pic" />
       <h1 class="name">Matthew Chan</h1>
-      <p class="bio">Building and shipping games & apps @ 15.<br>G4C 1st Place · Kairo: 80+ users · Strive: 2nd</p>
+      <p class="bio">Shipping games, apps & hardware @ 15.<br>G4C 1st Place · Kairo: 80+ users · Strive: 2nd</p>
       <p class="status">Open to PM internships</p>
 
       <div class="socials">
@@ -773,6 +774,7 @@
         <span class="tag">Ship &amp; Iterate</span>
         <span class="tag">Data-Driven Decisions</span>
         <span class="tag">Full-Stack Development</span>
+        <span class="tag">Hardware Prototyping</span>
       </div>
 
       <a href="https://mail.google.com/mail/?view=cm&to=matthewchan071010@gmail.com" target="_blank" class="cta-button">Email me</a>
@@ -1053,6 +1055,29 @@
       </div><!-- /.projects-grid -->
       </div>
     </details>
+
+    <div style="margin-top: 56px;"></div>
+    <div class="section-label fade-in">Hardware</div>
+
+    <div class="project fade-in">
+      <div class="project-info">
+        <div class="project-header">
+          <div class="project-name">Telepathic Servos</div>
+          <span class="project-date">2026</span>
+        </div>
+        <div class="project-desc">Wired up two MG90S servos to a Raspberry Pi 4 through a PCA9685 driver, then tied them to a hand tracker running on my laptop webcam. The camera reads my finger positions and moves the servos in real time, kind of like giving the computer a telepathic link to my hand. First real embedded build, and seeing software reach into the physical world felt completely different from shipping another web app.</div>
+        <div class="tags">
+          <span class="tag">Raspberry Pi</span>
+          <span class="tag">Hand Tracking</span>
+          <span class="tag">First Embedded Build</span>
+        </div>
+        <div class="video-carousel">
+          <video src="hardware-gesture-servo-demo-2.mp4" autoplay muted loop playsinline preload="none"></video>
+          <video src="hardware-gesture-servo-demo.mp4" autoplay muted loop playsinline preload="none"></video>
+          <img src="hardware-gesture-servo-setup.webp" alt="Raspberry Pi 4 wired to a PCA9685 and two MG90S servos, with a laptop running MediaPipe hand tracking alongside" loading="lazy" />
+        </div>
+      </div>
+    </div>
 
     <div style="margin-top: 56px;"></div>
     <div class="section-label fade-in">Achievements</div>
