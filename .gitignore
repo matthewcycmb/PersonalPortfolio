@@ -5,3 +5,4 @@
 
 # Backup files
 *.bak
+.gstack/

@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="Grade 10 student in Vancouver building AI-powered tools, gesture-controlled games, and full-stack apps.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -728,6 +728,109 @@
       animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
+    /* ---- Now line (top of main) ---- */
+    .now-line {
+      font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      font-size: 13px;
+      color: rgba(245, 235, 230, 0.42);
+      line-height: 1.6;
+      margin-bottom: 36px;
+      letter-spacing: 0.1px;
+      text-align: left;
+      animation: fadeIn 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @media (max-width: 960px) {
+      .now-line { text-align: center; }
+    }
+    .now-line a {
+      color: rgba(245, 235, 230, 0.7);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 1px;
+      transition: color 0.2s ease;
+    }
+    .now-line a:hover { color: var(--text-primary); }
+
+    /* ---- Writeups ---- */
+    .writeup {
+      background: rgba(12, 8, 6, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+      text-align: left;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .writeup:hover {
+      background: rgba(232, 115, 90, 0.09);
+      border-color: rgba(232, 115, 90, 0.22);
+    }
+    .writeup summary {
+      list-style: none;
+      cursor: pointer;
+      outline: none;
+    }
+    .writeup summary::-webkit-details-marker { display: none; }
+    .writeup-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .writeup-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+    }
+    .writeup-date {
+      font-size: 12px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    .writeup-excerpt {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-top: 8px;
+    }
+    .writeup-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+    .writeup summary:hover .writeup-toggle { opacity: 1; }
+    .writeup-toggle::after { content: " +"; }
+    .writeup[open] .writeup-toggle::after { content: " −"; }
+    .writeup[open] .writeup-excerpt { display: none; }
+    .writeup-body {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .writeup-body p {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--text-primary);
+      opacity: 0.92;
+      max-width: 66ch;
+      margin: 0 0 14px 0;
+    }
+    .writeup-body p:last-child { margin-bottom: 0; }
+
     /* ---- Scroll fade-in ---- */
     .fade-in {
       opacity: 0;
@@ -796,6 +899,8 @@
     </aside>
 
     <main class="main">
+    <p class="now-line">Apr 2026 &middot; Shipping hardware side-projects. Latest write-up: <a href="#writeups">Why I killed Kairo</a>.</p>
+
     <div class="section-label fade-in">Projects</div>
 
     <div class="project fade-in">
@@ -1182,6 +1287,24 @@
         </div>
       </div>
     </div>
+
+    <div id="writeups" class="section-label fade-in">Writeups</div>
+
+    <details class="writeup fade-in" open>
+      <summary>
+        <div class="writeup-header">
+          <div class="writeup-title">Why I killed Kairo</div>
+          <span class="writeup-date">Apr 2026</span>
+        </div>
+        <div class="writeup-excerpt">A post-mortem on shutting down Kairo, the four questions I now run every new idea through, and why being a GPT wrapper isn't a business.</div>
+        <div class="writeup-toggle">Read</div>
+      </summary>
+      <div class="writeup-body">
+        <p>So I killed Kairo. For context, Kairo was this AI thing I built to help high school students organize their extracurriculars. Clubs, competitions, deadlines, all in one place. Sounds useful, right? That's what I thought too. Then I actually watched the numbers come in. Like 600 visits, 70% bounce rate, 80 signups. And even the people who signed up, they'd only open it maybe once or twice a month. Because realistically, how often do you actually update your extracurriculars? Not daily, not weekly. Once a month, max. That's not a product. That's a tool you forget about between uses.</p>
+        <p>But honestly, the numbers weren't even the main reason. The real thing was when I sat down and asked myself this. What can Kairo do that Claude can't already do? And the answer was basically nothing. I was literally just building a GPT wrapper. A UI on top of something Anthropic or OpenAI is gonna ship for free in six months. That's not sustainable, that's not innovative, and I just don't wanna build that.</p>
+        <p>So I shut it down. Now before I start anything new I run four questions through my head. Will people come back? Does it get better as AI gets better? Can Claude already do this? And is this a real problem or just fun to ship? Misses any of them, I don't touch it.</p>
+      </div>
+    </details>
 
     <div class="cta">
       <p>Working on something interesting? Let's talk.</p>
