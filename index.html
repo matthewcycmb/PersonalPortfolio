@@ -109,24 +109,8 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.12),
         inset 0 -1px 0 rgba(0, 0, 0, 0.2),
         0 24px 60px -20px rgba(0, 0, 0, 0.6);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-      transform-style: preserve-3d;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .glass-card.is-tilting { will-change: transform; }
-    .glass-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.12), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .glass-card > * { position: relative; z-index: 1; }
-    .glass-card.is-tilting { border-color: rgba(255, 255, 255, 0.18); }
-    .glass-card.is-tilting::before { opacity: 1; }
     .glass-nav {
       background: rgba(18, 18, 18, 0.55);
       backdrop-filter: blur(24px) saturate(180%);
@@ -1877,35 +1861,8 @@
     heroInView.observe(heroSection);
   }
 
-  // ---------- Cursor-reactive glass cards ----------
   const finePointer = window.matchMedia('(pointer: fine)').matches;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (finePointer && !reduceMotion) {
-    document.querySelectorAll('.glass-card').forEach(function (card) {
-      let raf = 0;
-      card.addEventListener('mousemove', function (e) {
-        if (raf) return;
-        raf = requestAnimationFrame(function () {
-          raf = 0;
-          const r = card.getBoundingClientRect();
-          const px = e.clientX - r.left;
-          const py = e.clientY - r.top;
-          const nx = px / r.width;
-          const ny = py / r.height;
-          const tiltX = (0.5 - ny) * 5;
-          const tiltY = (nx - 0.5) * 5;
-          card.style.setProperty('--mx', px + 'px');
-          card.style.setProperty('--my', py + 'px');
-          card.style.transform = 'perspective(900px) rotateX(' + tiltX.toFixed(2) + 'deg) rotateY(' + tiltY.toFixed(2) + 'deg) translateZ(0)';
-        });
-      });
-      card.addEventListener('mouseenter', function () { card.classList.add('is-tilting'); });
-      card.addEventListener('mouseleave', function () {
-        card.classList.remove('is-tilting');
-        card.style.transform = '';
-      });
-    });
-  }
 
   // ---------- Count-up stats ----------
   const statsRoot = document.querySelector('[data-stats]');
