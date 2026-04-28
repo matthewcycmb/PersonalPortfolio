@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matthew Chan</title>
-  <meta name="description" content="matthew chan — 15, grade 10 pre-IB in vancouver. building AI games, tools, and hardware. 1st place G4C HK 2026. lunatechs keynote. prosper whistler qualifier.">
+  <meta name="description" content="matthew chan, 15, grade 10 pre-IB in vancouver. building AI games, tools, and hardware. 1st place G4C HK 2026. lunatechs keynote. prosper whistler qualifier.">
   <meta name="theme-color" content="#fafafa">
   <meta name="author" content="Matthew Chan">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="15, grade 10 pre-IB in vancouver. building AI games, tools, and hardware.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -39,47 +39,71 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--text-primary);
-      font-family: 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       font-weight: 400;
-      font-size: 18px;
-      line-height: 1.75;
+      font-size: 16px;
+      line-height: 1.55;
+      letter-spacing: -0.005em;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       display: flex;
       justify-content: center;
-      padding: 48px 24px;
+      align-items: center;
+      padding: 28px 24px;
     }
 
     .page {
       width: 100%;
-      max-width: 600px;
+      max-width: 620px;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 14px;
     }
 
+    .intro {
+      margin-bottom: 2px;
+    }
     .intro h1 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      letter-spacing: -0.015em;
     }
     .intro p {
       color: var(--text-secondary);
     }
 
+    .block + .block {
+      border-top: 1px solid rgba(26, 26, 26, 0.08);
+      padding-top: 14px;
+    }
     .block h2 {
       font-size: 15px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .block p { color: var(--text-secondary); }
+    .block h2::before {
+      content: "◆  ";
+      color: var(--text-primary);
+    }
+    .block p {
+      color: var(--text-secondary);
+      padding-left: 26px;
+    }
     .block ul { list-style: none; }
     .block li {
       color: var(--text-secondary);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      padding-left: 26px;
+      text-indent: -26px;
+      text-wrap: pretty;
+    }
+    .block li strong {
+      color: var(--text-primary);
+      font-weight: 700;
     }
     .block li::before {
-      content: "• ";
+      content: "↪  ";
       color: var(--muted);
     }
 
@@ -87,11 +111,20 @@
       color: var(--link);
       text-decoration: underline;
       text-underline-offset: 3px;
+      font-weight: 400;
+      transition: opacity 0.15s ease;
+    }
+    strong a, a strong { font-weight: 400; }
+    a:hover { opacity: 0.65; }
+
+    ::selection {
+      background: rgba(0, 0, 238, 0.15);
+      color: var(--text-primary);
     }
 
     .reach {
       color: var(--text-secondary);
-      margin-top: 4px;
+      margin-top: 6px;
     }
   </style>
 </head>
@@ -104,25 +137,37 @@
     </header>
 
     <section class="block">
-      <h2>shipped:</h2>
+      <h2>highlights:</h2>
       <ul>
-        <li><a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer">reef defender</a> — 1st place, G4C student game jam HK 2026 (university-level, 40+ students). webcam hand-tracking coral reef defense game (react/typescript, mediapipe).</li>
-        <li>keynote @ lunatechs HK — 50+ engineers and founders. talk on AI and vibe coding.</li>
-        <li>qualified — prosper whistler national invitational case competition.</li>
-        <li>2nd place — Strive Vancouver case competition (240+ high school students).</li>
-        <li>8+ shipped apps. 1.5M+ content views. 2k+ followers <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer">@matthewashere.com0</a>.</li>
+        <li><a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer">Reef Defender</a>, <strong>1st at G4C HK 2026</strong>, beat 40+ university students. hand-tracking webcam game in react + mediapipe.</li>
+        <li><strong>Keynote at <a href="https://www.lunatechs.social/events/2026-04-03-openclaw-joins-your-team/" target="_blank" rel="noopener noreferrer">Lunatechs HK</a> on AI + vibe coding</strong>, 50+ engineers and founders.</li>
+        <li><strong>2nd at <a href="https://www.strivecompetition.org/" target="_blank" rel="noopener noreferrer">Strive Case Competition</a></strong>, 300+ high schoolers, 60+ teams.</li>
+        <li><strong>Qualified</strong> for <a href="https://www.prosperfoundation.ca/piic" target="_blank" rel="noopener noreferrer">Prosper Ivey Invitational Competition</a>.</li>
+        <li><strong>1.5M+ content views. 2k+ followers</strong> on <a href="https://www.instagram.com/matthewasherelol/" target="_blank" rel="noopener noreferrer">@matthewasherelol</a>.</li>
       </ul>
     </section>
 
     <section class="block">
-      <p>currently: experimenting with hardware + software.</p>
+      <h2>projects:</h2>
+      <ul>
+        <li><a href="https://kairokairo.com/" target="_blank" rel="noopener noreferrer">Kairo</a>, AI tool that organizes high school clubs, comps, and deadlines.</li>
+        <li><a href="https://gesturearcadefinal.vercel.app?_vercel_share=nZ2J0GrqpqbkpCMWfDdzWviF6n8chqZv" target="_blank" rel="noopener noreferrer">Gesture Arcade</a>, 4 webcam-controlled mini games in one site.</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h2>currently:</h2>
+      <ul>
+        <li>experimenting with hardware + software.</li>
+        <li><strong>open to summer internships at AI / startup teams.</strong></li>
+      </ul>
     </section>
 
     <footer class="reach">
       reach me:
-      <a href="https://www.instagram.com/matthewashere.com0/" target="_blank" rel="noopener noreferrer">instagram</a> ·
-      <a href="https://mail.google.com/mail/?view=cm&amp;to=matthewchan071010@gmail.com" target="_blank" rel="noopener noreferrer">email</a> ·
-      <a href="https://github.com/matthewcycmb" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://www.instagram.com/matthewasherelol/" target="_blank" rel="noopener noreferrer">Instagram</a> ·
+      <a href="https://www.linkedin.com/in/matthew-chan-12546339b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+      <a href="https://github.com/matthewcycmb" target="_blank" rel="noopener noreferrer">GitHub</a>
     </footer>
   </main>
 </body>
