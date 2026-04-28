@@ -82,10 +82,6 @@
       font-weight: 700;
       margin-bottom: 6px;
     }
-    .block h2::before {
-      content: "◆  ";
-      color: var(--text-primary);
-    }
     .block p {
       color: var(--text-secondary);
       padding-left: 26px;
@@ -126,6 +122,23 @@
       color: var(--text-secondary);
       margin-top: 6px;
     }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 24px 18px;
+        font-size: 15px;
+        align-items: flex-start;
+      }
+      .page { gap: 12px; }
+      .intro h1 { font-size: 17px; }
+      .block h2 { font-size: 14px; }
+      .block + .block { padding-top: 12px; }
+      .block li {
+        margin-bottom: 5px;
+        padding-left: 22px;
+        text-indent: -22px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -139,8 +152,9 @@
     <section class="block">
       <h2>highlights:</h2>
       <ul>
-        <li><a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer">Reef Defender</a>, <strong>1st at G4C HK 2026</strong>, beat 40+ university students. hand-tracking webcam game in react + mediapipe.</li>
+        <li><a href="https://ecoblaster.vercel.app?_vercel_share=H9OFEQNZzVvvovXKIFLca9pH2RuDwxQ4" target="_blank" rel="noopener noreferrer">Reef Defender</a>, <strong>1st at Games 4 Change HK 2026</strong>, beat 40+ university students. hand-tracking webcam game in react + mediapipe.</li>
         <li><strong>Keynote at <a href="https://www.lunatechs.social/events/2026-04-03-openclaw-joins-your-team/" target="_blank" rel="noopener noreferrer">Lunatechs HK</a> on AI + vibe coding</strong>, 50+ engineers and founders.</li>
+        <li><a href="https://kairokairo.com/" target="_blank" rel="noopener noreferrer">Kairo</a>, AI extracurriculars tracker. <strong>600+ visits, 80+ signups</strong> in the first month.</li>
         <li><strong>2nd at <a href="https://www.strivecompetition.org/" target="_blank" rel="noopener noreferrer">Strive Case Competition</a></strong>, 300+ high schoolers, 60+ teams.</li>
         <li><strong>Qualified</strong> for <a href="https://www.prosperfoundation.ca/piic" target="_blank" rel="noopener noreferrer">Prosper Ivey Invitational Competition</a>.</li>
         <li><strong>1.5M+ content views. 2k+ followers</strong> on <a href="https://www.instagram.com/matthewasherelol/" target="_blank" rel="noopener noreferrer">@matthewasherelol</a>.</li>
@@ -150,7 +164,6 @@
     <section class="block">
       <h2>projects:</h2>
       <ul>
-        <li><a href="https://kairokairo.com/" target="_blank" rel="noopener noreferrer">Kairo</a>, AI tool that organizes high school clubs, comps, and deadlines.</li>
         <li><a href="https://gesturearcadefinal.vercel.app?_vercel_share=nZ2J0GrqpqbkpCMWfDdzWviF6n8chqZv" target="_blank" rel="noopener noreferrer">Gesture Arcade</a>, 4 webcam-controlled mini games in one site.</li>
       </ul>
     </section>
